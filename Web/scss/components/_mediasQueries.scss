@@ -1,0 +1,146 @@
+
+@media (max-width: 300px) {
+    body {
+        display: none;
+    }
+}
+
+/* Para pantallas de tamaño medio (como tablets) */
+@media only screen and (max-width: 768px) {
+    
+    .navbar-expand-lg .navbar-toggler{
+        display: none;
+    }
+
+    .carousel{
+        width: 100%;
+        height: 400px;
+        
+    }
+
+    .sec1{
+        background-color:#D7D7D7; /*#d7d7d7*/
+        width: 100%;
+        height: 100%; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+    
+    .div_s1{
+        background-color:#4d4c4c;
+        width: 100%;
+    }
+    
+    
+    .div_s2{
+        position: relative;
+        
+       padding: 0;
+       
+        
+    }
+    
+    
+    .div_s2_div1{ 
+        position: absolute;
+        
+        left: 0%;
+        top: 0%;
+        margin-top: 10px ;
+        
+       padding: 0;
+    }
+    
+    .div2_s2_grid{
+        
+       display:flex;
+       flex-direction: column;
+       align-items: center;
+     
+      
+        
+       
+    }
+    
+    .img__div{
+    width: 100%;
+   
+    }
+   
+
+    .img__ayuda{
+        width: 35px;
+        position: fixed;
+        left: 90%;
+        top: 93.2%;
+        opacity: 60%;
+    }
+
+    .reg_f1_div_tu.d1{
+     
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .reg_f1_btn_registro{
+    
+        
+        margin: 10% 50%;
+    }
+
+    
+    .color-gris-oscuro{ 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;}
+
+
+    .ayuda_footer_div2{
+    
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        
+    }
+}
+
+
+@media only screen and (max-width: 500px){
+
+    .d-flex{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: start;
+        flex-wrap: wrap;
+    }
+    .form-control.me-2.txtClave{
+        margin-top: 10%;
+    }
+    .btn.btn-outline-light.btnRegistro
+    {margin-top: 5%;}
+
+    .btn.btn-outline-info.btnIngreso{
+        margin-top: 5%;
+    }
+   
+    
+}
+
+@media only screen and (max-width: 585px){
+
+.ayuda_main_div_div2{
+    margin-top: 4em;
+    margin-bottom: 4em;
+} 
+
+}

@@ -1,0 +1,129 @@
+live server (adonn de visual studio code)
+
+-------------html-------------------------------------------
+
+head (archivos, librerias, css)
+
+para conectarlo a CSS
+
+link  rel="[stulesheet]" href= "[nombre del archivo]" (va en head) (ctl+click para probarlo)
+
+
+Etiquetas
+
+p = parrafos
+em = resaltador del parrafo
+
+ul = lista desordenada
+ol = lista ordenada
+li = item de las listas
+
+<!-- Comentario -->
+
+a = enlace (href = "https://")  (../ para el nivel anterior)
+
+id es un atributo de las etiqueta
+puedo direccionar con (href = "https: #id")
+
+<!-- Clases -->
+
+atributo class = "Nombre"
+
+------------css----------------------------------------
+
+se hace un solo css para todos los html (un anillo para gobernarlos a todos)
+
+/* Comentario */ 
+
+selector {propiedad: valor; }
+
+background-color = color de fondo
+color = aplica al color
+text-decoration = decorado (sirve para sacarle lo que viene por defecto)
+/*-----Clases-------Individualiza los atributos html*/
+.clase{propiedad: valor;}
+
+(se pueden reutilizar)
+
+/*ID*/
+#ID
+(se usan los id para javascript son unicos)
+
+Se conbina todo usando espacios
+
+/*color*/ Buscarlo
+
+(* selector universal)
+
+magin = Del borde hacia afura
+padding = Del contenido al borde
+wigth= ancho (auto = centra automatico)
+heigth= alto
+
+html existen en 
+bloque = ocupa todo el horizontal
+en linea = solo ocupa el espacio de su contenido
+
+medidas absolutas pixeles (px)
+medidas relativas alto(vh), ancho(vw), (rem), porce(%), fraccion (fr)
+
+vh,vw(en relacion de la pantalla)
+porcentaje (en relacion al padre)
+
+
+(Fuentes google fonts)
+
+nombre de las clases bem __ o --
+
+ctl+ shift + a podes hacer comentario en cualquier lenguaje de visual studio
+
+berder: solid 5px black;
+
+
+position: sticky; (por encima/ con lo que ocupa/ hijo directo)
+
+position: fixed (por encima/ en 3D)
+
+positon: relative 
+
+positon: absolute (el papa tiene que tener relative/ siempre al padre directo con relative)
+z-index = pizador 3D
+
+flexbox(padre directo)
+display: flex;
+flex-direction: row; (eje x) [row-reverse(cambia el sentido del eje)] 
+justify-content: [space-evenly = (mismo espacio), flex-start, flex-end, center, space-between, space-around]
+align-items: [flex-end, flex-center, flex-start, center]
+/*align-content: space-between*/
+flex-wrap: wrap;(cuando no cabe lo manda para abajo)[wrap-reverse(cambia el acomodado)]
+
+/*aling:self order: modifica el orden*/
+clt+b (selecciona los que son iguales)
+
+(flexbox froggy - sirve para practicar)
+
+@media only screen and {max-with 480px}{ /*todo el css que queramos agregar o pisar*/}
+
+
+
+table= tabla
+tr= celda
+
+/*grid*/
+display = grid;
+grid-template-rows:150px 150px, repeat(3, 1fr);/*repite 3 veces lo que pusimos*/
+grid-template-columns: 150px 150px;
+
+grid-column-start = 1
+grid-column-end = 3
+
+grid-row = 1 / 3;
+
+grid-row = 1 / span 3; /*span hace que sea una columna o una fila cambia*/
+
+
+---------------css + boostrap-----------(getboostrap.com)---------cssstats.com (online)------
+
+podes buscar en la documentacion las positions o flexbox
+class"col-lg = 12 col-md-6 col-sm-12" (clase con diferentes tamaños dependiendo de la vista)
+

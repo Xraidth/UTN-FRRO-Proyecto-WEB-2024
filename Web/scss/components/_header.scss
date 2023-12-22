@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    
+}
+
+.nav{
+    width: 100%;
+}
+.header{
+    width: 100%;
+}
+.color-gris-oscuro
+{   
+    background-color: rgb(32, 33, 35);
+}
+
+.navbar__img{
+    width: 40px;
+    height: 41px;
+
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo__texto{
+    color: #ffffff;
+   
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 22px;
+}
+
+.btnIngreso{
+margin-left: 1%;
+margin-right: 3%;
+}

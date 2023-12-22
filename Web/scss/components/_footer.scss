@@ -1,0 +1,59 @@
+/*------Lupa de ayuda------*/
+.div__img
+{
+position: relative;
+}
+.img__ayuda{
+    width: 35px;
+    position: fixed;
+    left: 97.2%;
+    top: 93.2%;
+    opacity: 60%;
+}
+
+/*--------Main--------*/
+
+.main_footer{
+    background-color:#333333;
+    height: 25%;
+ }
+
+    
+/*--------Ayuda--------*/
+.ayuda_footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ayuda_footer_div1{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ayuda_footer_div2{
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.ayuda_footer_a{
+    font-size: 20px;
+    text-decoration: none;
+    margin-left: 1px;
+}
+.ayuda_footer_lblAyuda{
+    margin-left: 1px;
+    font-size: 20px;
+}
+.ayuda_footer_lblEncabe{
+    font-size: 22px;
+}
+.card{
+    margin-left: 10px;
+}
+
