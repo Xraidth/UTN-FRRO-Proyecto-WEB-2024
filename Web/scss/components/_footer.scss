@@ -9,6 +9,15 @@ position: relative;
     left: 97.2%;
     top: 93.2%;
     opacity: 60%;
+    transition:0.2s;
+}
+.img__ayuda:hover{
+    width: 40px;
+    opacity: 100%;
+    left: 97%;
+    top: 93%;
+    transform: rotate(-5deg);
+    
 }
 
 /*--------Main--------*/

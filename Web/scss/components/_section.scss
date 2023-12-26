@@ -216,16 +216,44 @@ flex-direction: row;
     }
     
     .main_botonera{
-        height: 40px;
-        width: 200px;
-        background-color: red;
+        
         position: absolute;
         box-sizing: border-box;
         bottom: 0;
-        opacity: 60%;
-    
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        
+        
     }
 
+    .imgBotonera{
+        width: 40px;
+        background-color: rgb(250, 250, 250);
+        transition: width 0.1s;
+    }
+    .btnBotonera{
+        
+        margin: 3px;
+        border-radius: 5px;
+        
+        
+    }
+    .imgBotonera:hover{
+        width: 50px;
+        box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+        filter: brightness(1.0);
+    }
+
+    .btnBorrado{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+    }
+    .imgbtnBorrado{ width: 20px;}
+    
     
 /*----------Ayuda-----------*/
 

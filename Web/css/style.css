@@ -30,6 +30,13 @@ body, html {
 .logo {
   display: flex;
   align-items: center;
+  transition: 0.1s;
+}
+
+.logo:hover {
+  filter: brightness(1.5);
+  transform: scale(1.009);
+  box-shadow: 0 0 1px rgba(253, 253, 253, 0.02);
 }
 
 .logo__texto {
@@ -222,13 +229,40 @@ body, html {
 }
 
 .main_botonera {
-  height: 40px;
-  width: 200px;
-  background-color: red;
   position: absolute;
   box-sizing: border-box;
   bottom: 0;
-  opacity: 60%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgBotonera {
+  width: 40px;
+  background-color: rgb(250, 250, 250);
+  transition: width 0.1s;
+}
+
+.btnBotonera {
+  margin: 3px;
+  border-radius: 5px;
+}
+
+.imgBotonera:hover {
+  width: 50px;
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+  filter: brightness(1);
+}
+
+.btnBorrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgbtnBorrado {
+  width: 20px;
 }
 
 /*----------Ayuda-----------*/
@@ -294,6 +328,15 @@ body, html {
   left: 97.2%;
   top: 93.2%;
   opacity: 60%;
+  transition: 0.2s;
+}
+
+.img__ayuda:hover {
+  width: 40px;
+  opacity: 100%;
+  left: 97%;
+  top: 93%;
+  transform: rotate(-5deg);
 }
 
 /*--------Main--------*/
