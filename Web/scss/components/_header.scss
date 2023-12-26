@@ -30,7 +30,14 @@ body, html {
 .logo{
     display: flex;
     align-items: center;
+    transition: 0.1s;
 }
+.logo:hover{
+    filter: brightness(1.5);
+    transform: scale(1.009);
+    box-shadow: 0 0 1px rgba(253, 253, 253, 0.02);
+}
+
 
 .logo__texto{
     color: #ffffff;
@@ -38,7 +45,11 @@ body, html {
     margin-left: 10px;
     margin-top: 5px;
     font-size: 22px;
+    
 }
+
+
+
 
 .btnIngreso{
 margin-left: 1%;
