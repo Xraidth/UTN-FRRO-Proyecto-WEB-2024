@@ -259,10 +259,19 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.1s;
 }
 
 .imgbtnBorrado {
-  width: 20px;
+  width: 13px;
+}
+
+.btnBorrado:hover {
+  scale: 1.2;
+}
+
+.main_main_table {
+  margin: 1px;
 }
 
 /*----------Ayuda-----------*/
@@ -343,6 +352,14 @@ body, html {
 .main_footer {
   background-color: #333333;
   height: 25%;
+}
+
+.main_footer_tabla {
+  display: inline-block;
+  list-style-type: none;
+  color: white;
+  padding: 0;
+  margin: 15px;
 }
 
 /*--------Ayuda--------*/

@@ -33,8 +33,9 @@
 
     btnIngreso.addEventListener('click', (e) => {
         e.preventDefault();
-
-        if (buscaUsuario(txtUsuario.value, txtClave.value)!= undefined) {
+        const usu = buscaUsuario(txtUsuario.value, txtClave.value);
+        if (usu != undefined) {
+            guardarSesion(usu);
             window.location.href = './main.html';
         }
         else{alert("Contraseña incorrecta!");}
@@ -46,5 +47,8 @@
 
     }
 
+    function guardarSesion(usu){
+        sessionStorage.setItem('usuario', JSON.stringify(usu));
+    }
 
     

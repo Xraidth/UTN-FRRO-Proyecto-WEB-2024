@@ -250,9 +250,18 @@ flex-direction: row;
         display: flex;
         justify-content: center;
         align-items: center;
-      
+        transition: 0.1s;
+        
     }
-    .imgbtnBorrado{ width: 20px;}
+    .imgbtnBorrado{ width: 13px;}
+
+    
+    .btnBorrado:hover{
+        scale: 1.2;
+
+    }
+    
+    .main_main_table{ margin: 1px;}
     
     
 /*----------Ayuda-----------*/
