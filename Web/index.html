@@ -27,14 +27,20 @@
               </button>
               
                     
-                <form class="d-flex" role="Login" id="loginForm">
-                  <input class="form-control me-2 txtUsuario" type="search" placeholder="Usuario" aria-label="Usuario" id="txtUsuario">
-                  <input class="form-control me-2 txtClave" type="password" placeholder="Contraseña" id="txtClave">
-                  <a href="registro.html" class="btn btn-outline-light btnRegistro" id="btnRegistro">Registrarse</a>
-                  <a href="main.html" class="btn btn-outline-info btnIngreso" id="btnIngreso">Ingresar</a>
-                  
-                  
-                  
+                <form class="d-flex flex-column" role="Login" id="loginForm">
+                  <div class="d-flex flex-xl-row  flex-md-row flex-lg-row flex-sm-column">
+                  <input class="form-control me-2 txtUsuario mtp-8" type="search" placeholder="Usuario" aria-label="Usuario" id="txtUsuario">
+                  <input class="form-control me-2 txtClave mtp-8" type="password" placeholder="Contraseña" id="txtClave">
+                  <a href="registro.html" class="btn btn-outline-light btnRegistro mtp-8" id="btnRegistro">Registrarse</a>
+                  <a href="main.html" class="btn btn-outline-info btnIngreso mtp-8" id="btnIngreso">Ingresar</a>
+                  </div>
+                  <div>
+                    <div class="form-check mt-2">
+                      <input class="form-check-input" type="checkbox" value="" id="checkSesion" />
+                      <label class="form-check-label text-white" for="checkSesion"> Mantener la sesión activa </label>
+                    </div>
+                  </div>
+
                 </form>
             </div>
           </nav>
@@ -101,10 +107,10 @@
             
             <div class="div2_s2_grid">
               
-             <img src="Imagenes\students2.jpg" alt="" class="img__div">
-              <img src="Imagenes\students3.jpg" alt="" class="img__div">
-              <img src="Imagenes\students4.jpg" alt="" class="img__div">
-              <img src="Imagenes\students1.jpg" alt="" class="img__div">
+              <img src="./Imagenes/students2.jpg" alt="" class="img-thumbnail img__div">
+              <img src="./Imagenes/students3.jpg" alt="" class="img-thumbnail img-fluid img__div">
+              <img src="./Imagenes/students4.jpg" alt="" class="img-thumbnail img-fluid img__div">
+              <img src="./Imagenes/students1.jpg" class="img-thumbnail img__div">
               
             </div>
             

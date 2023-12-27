@@ -50,6 +50,7 @@ width: 100%;
 
 
 
+
 .carousel__h1{
     color: #ffffff;
     font-size: 40px;
@@ -213,7 +214,16 @@ flex-direction: row;
     
     .main_main_div2{
         position:relative;
+        
+        
     }
+    .main_main_div_div{
+        height: 100%;
+        max-width: 100%; 
+        overflow-y: auto;
+    }
+
+    .main_main_table{ margin: 1px;}
     
     .main_botonera{
         
@@ -260,10 +270,6 @@ flex-direction: row;
         scale: 1.2;
 
     }
-    
-    .main_main_table{ margin: 1px;}
-    
-    
 /*----------Ayuda-----------*/
 
 .ayuda_main_lupa{
