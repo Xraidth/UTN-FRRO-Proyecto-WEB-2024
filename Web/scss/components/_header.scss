@@ -70,7 +70,9 @@ margin-right: 3%;
     z-index: 2;
 }
 
-
+.nav_div_usuario:hover{
+    cursor: pointer;
+}
 
 .nav_div_op_usuario{
     position: absolute;
@@ -89,6 +91,11 @@ margin-right: 3%;
 
 .nav_div_li:hover{
     color: white;
+    cursor: pointer;
+}
+.li_cerrarsesion:hover{
+    color:rgb(231, 2, 2);
+    
 }
 
 
