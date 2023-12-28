@@ -55,3 +55,124 @@ body, html {
 margin-left: 1%;
 margin-right: 3%;
 }
+
+
+.nav_div_usuario{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 200px;
+    height: 45px;
+    border: solid 1px black;
+    border-radius: 10px ;
+    position: relative;
+    z-index: 2;
+}
+
+.nav_div_usuario:hover{
+    cursor: pointer;
+}
+
+.nav_div_op_usuario{
+    position: absolute;
+    top: 104%;
+    left:0%;
+    width: 200px;
+    background-color: rgb(63, 62, 62);
+    border-radius: 10px;
+    display: none;
+    z-index: 1;
+    
+}
+.nav_div_li{
+    transition: color 0.2s;
+}
+
+.nav_div_li:hover{
+    color: white;
+    cursor: pointer;
+}
+.li_cerrarsesion:hover{
+    color:rgb(231, 2, 2);
+    
+}
+
+
+.mostrar_nav_div_op{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: start;
+}
+
+.nav_div_op_menu{
+    
+    text-decoration: none;
+    list-style-type: none;
+    color: black;
+    margin: 0;
+      padding: 0;
+}
+
+
+
+
+.bbrnone{
+    border-bottom: none;
+}
+
+
+.nav_div_div3{
+    background-color: rgba(46, 45, 45, 0.705);
+    border-radius: 50px;
+}
+
+.nav_div_span{
+  background-color: white;
+  
+  
+}
+.nav_nombre_usuario{
+    color: #ffffff;
+}
+.nav_img_foto_perfil{
+    background-size: cover;
+    width: 42px;
+    height: auto;
+}
+.nav_img_flechita{
+    margin: 0px 0px 0px 0px;
+    width: 15px;
+    height: auto;
+    rotate: 270deg;
+}
+.rotar-90{
+    rotate: 0deg;
+}
+
+
+.nav_div_div1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: auto;
+    margin-top: 2px;
+    
+}
+.nav_div_div2{
+    text-align: center;
+    width: 90px;
+    height: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    }
+
+
+
+
+
+

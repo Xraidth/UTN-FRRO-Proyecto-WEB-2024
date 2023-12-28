@@ -4,8 +4,11 @@ const btnAgregar = document.getElementById('btnAgregar');
 const btnModificar = document.getElementById('btnModificar');
 const btnBorrar = document.getElementById('btnBorrar');
 const btnConsultar = document.getElementById('btnConsultar');
+const main_main_tr = document.getElementById('main_main_tr');
 
-window.addEventListener('load', function() {  
+window.addEventListener('load', function() { 
+    cargarUsuario();
+    cargarColumnas();
     cargarTabla();
 });
 
@@ -16,7 +19,24 @@ function cargarTabla(){
             main_main_tbody.appendChild(crearFila(usu, index));
         });
     }
+
     cargarResumen();
+}
+
+function cargarColumnas(){
+    
+    
+    if (usuarios.length > 0){
+        for (const u in usuarios[0]) {
+            const nueva_columna = document.createElement('th');
+            nueva_columna.textContent = u;
+            main_main_tr.appendChild(nueva_columna);
+        }
+    }
+    const final_columna = document.createElement('th');
+    main_main_tr.appendChild(final_columna);
+
+
 }
 
 function crearFila(usu, index){
@@ -86,4 +106,19 @@ function cargarTotal(){
 }
 
 
+
+const nav_div_usuario = document.getElementById("nav_div_usuario");
+const nav_img_flechita = document.getElementById("nav_img_flechita");
+const nav_div_op_usuario = document.getElementById("nav_div_op_usuario");
+
+
+nav_div_usuario.addEventListener('click', ()=>{
+nav_img_flechita.classList.toggle("rotar-90");
+nav_div_op_usuario.classList.toggle("mostrar_nav_div_op");
+
+const nav_div_li_cerrar_sesion = document.getElementById('nav_div_li_cerrar_sesion');
+nav_div_li_cerrar_sesion.addEventListener('click', () =>{ 
+    cerrarSesion();
+    window.location.href = './index.html'});
+});
 
