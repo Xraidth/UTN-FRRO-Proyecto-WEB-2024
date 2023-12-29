@@ -51,7 +51,12 @@ function crearFila(usu, index){
         if (usu.hasOwnProperty(u)) {
             const celda = document.createElement('td');
             celda.className = 'text-center'
-            celda.innerHTML = usu[u].toString(); 
+            if(usu[u]!=null){
+                celda.innerHTML = usu[u].toString();
+            } 
+            else{
+                celda.innerHTML = "";
+                }
             fila.appendChild(celda);
         }
     }

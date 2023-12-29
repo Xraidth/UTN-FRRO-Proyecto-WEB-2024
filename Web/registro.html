@@ -7,6 +7,12 @@
     <title>UTN FRRO Registro</title>
     <link rel="icon" type="image/x-icon" href="Imagenes\utn-logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
 </head>
 <body>
   <header>
@@ -57,16 +63,16 @@
                   </div>
 
                   <div class="reg_f1_div reg_encol">
-                    <input class="reg_f1_txt" type="text">
-                    <input class="reg_f1_txt" type="password">
-                    <input class="reg_f1_txt" type="email">
-                    <input class="reg_f1_txt" type="text">
-                    <input class="reg_f1_txt" type="text">
-                    <input class="reg_f1_txt" type="date">
-                    <input class="reg_f1_txt" type="text">
-                    <input class="reg_f1_txt" type="text">
-                    <input class="reg_f1_txt" type="text">
-                    <input class="reg_f1_txt" type="number">
+                    <input class="reg_f1_txt" type="text" id="txtUsuario">
+                    <input class="reg_f1_txt" type="password" id="txtClave">
+                    <input class="reg_f1_txt" type="email" id="txtEmail">
+                    <input class="reg_f1_txt" type="text" id="txtNombre">
+                    <input class="reg_f1_txt" type="text" id="txtApellido">
+                    <input class="reg_f1_txt" type="date" id="dtpFechaNac">
+                    <input class="reg_f1_txt" type="text" id="txtTel">
+                    <input class="reg_f1_txt" type="text" id="txtDni">
+                    <input class="reg_f1_txt" type="text" id="txtCalle">
+                    <input class="reg_f1_txt" type="number" id="txtNro">
                   </div>
                 </div>    
                 
@@ -85,18 +91,18 @@
                         <div class="reg_f1_dw_tu">
                         
                     
-                              <select class="form-select " aria-label="Default select example">
-                                  <option selected>Alumno</option>
-                                  <option value="Alumno">Alumno</option>
+                              <select class="form-select " aria-label="Default select example" id="ddTipoUsuario">
+                                  <option selected value="Administrador">Administrador</option>  
+                                  <option  value="Alumno">Alumno</option>
                                   <option value="Profesor">Profesor</option>
-                                  <option value="Adm">Administrador</option>
+                                  
                               </select>
                         </div>
 
                   </div>
 
                           <div class="reg_f1_dw_tu">
-                            <button type="button" class="btn btn-primary reg_f1_btn_registro">Registrarse</button>
+                            <button type="button" class="btn btn-primary reg_f1_btn_registro" id="btnRegistro">Registrarse</button>
                           </div>
                   
                 </div>
@@ -145,6 +151,10 @@
   </a>
   </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+<script src="./js/Entidades/usuario.js" type="text/javascript"></script>
+<script src="./js/Utilidades/notificaciones.js" type="text/javascript"></script>
+<script src="./js/Utilidades/registro.js"  type="text/javascript"></script>
 </body>
 </html>
