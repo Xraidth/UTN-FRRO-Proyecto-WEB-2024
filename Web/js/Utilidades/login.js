@@ -8,12 +8,12 @@
 
     
     
-
-
-
-    window.addEventListener('load', function() {  
-        txtUsuario.focus();
-      });
+    document.addEventListener('DOMContentLoaded', function() {
+        checkLocal()||checkSesion() ? window.location.href = './main.html': txtUsuario.focus();
+        
+        
+    });
+    
 
     loginForm.addEventListener('keydown', (e)=>{
 
@@ -63,8 +63,9 @@
 
     }
 
-    function guardarSesion(usu){
-        sessionStorage.setItem('usuario', JSON.stringify(usu));
-    }
+   
 
     
+
+    
+  

@@ -7,6 +7,7 @@ const btnConsultar = document.getElementById('btnConsultar');
 const main_main_tr = document.getElementById('main_main_tr');
 
 window.addEventListener('load', function() { 
+    
     cargarUsuario();
     cargarColumnas();
     cargarTabla();
