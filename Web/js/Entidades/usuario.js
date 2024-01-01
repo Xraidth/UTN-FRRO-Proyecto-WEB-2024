@@ -1,3 +1,5 @@
+const cbxSesion = document.getElementById('cbxSesion');
+
 class Usuario {
     constructor(usu, clave, mail, nom, ape, fechaNac, tel, dni,dir, tpusu){
         this.Usuario = usu;
@@ -30,10 +32,48 @@ function usuarioActual(){
 function cargarUsuario(){
     const lblUsuario = document.getElementById('nav_nombre_usuario');
     const usu = JSON.parse(sessionStorage.getItem('usuario'));
-    lblUsuario.textContent = usu['usuario'];
+    lblUsuario.textContent = usu['Usuario'];
     }
 
 function cerrarSesion(){
-    sessionStorage.removeItem("usuario");
-
+    if(JSON.parse(sessionStorage.getItem('usuario'))){sessionStorage.removeItem("usuario")};
+    if(JSON.parse(localStorage.getItem('usuario'))){localStorage.removeItem("usuario");}
 }
+
+function guardarSesion(usu) {
+    if (cbxSesion.checked) {
+        
+        localStorage.setItem('usuario', JSON.stringify(usu));
+    } 
+        
+        sessionStorage.setItem('usuario', JSON.stringify(usu));
+    
+}
+
+
+function checkLocal(){
+
+    
+    const usu = JSON.parse(localStorage.getItem('usuario'));
+    
+    
+    if(usu){
+
+        sessionStorage.setItem('usuario', JSON.stringify(usu));
+        
+
+        return true;
+    }
+    
+    else{ return false;}
+}
+
+function checkSesion(){
+    const usu = JSON.parse(sessionStorage.getItem('usuario'));
+    if(usu){
+        return true;
+    }
+    else{return false}
+    
+}
+

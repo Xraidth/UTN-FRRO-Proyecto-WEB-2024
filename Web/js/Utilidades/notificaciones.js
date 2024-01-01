@@ -3,7 +3,10 @@ const div_custom_mensaje = document.createElement('div');
 const txt_custom_mensaje = document.createElement('div');
 div_custom_mensaje.className ='toast-custom-div';
 txt_custom_mensaje.className ='toast-custom-txt';
-txt_custom_mensaje.textContent =txtNotif;
+txt_custom_mensaje.textContent =txtNotif;  
+
+div_custom_mensaje.id = 'div_custom_mensaje'
+txt_custom_mensaje.id = 'txt_custom_mensaje'
 div_custom_mensaje.appendChild(txt_custom_mensaje);
 Toastify({
     node: div_custom_mensaje,
@@ -17,4 +20,7 @@ Toastify({
     className: 'toast-custom-ntf',
     stopOnFocus: false
 }).showToast();
+
 }
+
+

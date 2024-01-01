@@ -57,7 +57,7 @@ body, html {
   align-items: center;
   width: 200px;
   height: 45px;
-  border: solid 1px black;
+  border: solid 1px rgb(86, 88, 105);
   border-radius: 10px;
   position: relative;
   z-index: 2;
