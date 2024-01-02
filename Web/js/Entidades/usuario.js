@@ -13,7 +13,13 @@ class Usuario {
         this.Direccion =dir;
         this.TipoUsuario = tpusu;
     }
+    getObjName(){
+        return "Usuarios";
+    }
 }
+
+
+  
 
 const usuarios = [];
 usuarios.push(
