@@ -5,47 +5,32 @@ const btnModificar = document.getElementById('btnModificar');
 const btnBorrar = document.getElementById('btnBorrar');
 const btnConsultar = document.getElementById('btnConsultar');
 const main_main_tr = document.getElementById('main_main_tr');
-const pillsTab = document.getElementById('pills-tab');
 
-let objetos = [usuarios, materias]; 
-let obj_util;
-
-document.addEventListener('DOMContentLoaded', function() { 
+window.addEventListener('load', function() { 
     
-    obj_util = 0;
     cargarUsuario();
-    cargarMenuBotones();
-    cargarTablaCompleta(objetos[obj_util]);
+    cargarColumnas();
+    cargarTabla();
 });
 
-function cargarTablaCompleta(objetos){
-    cargarColumnas(objetos);
-    cargarTabla(objetos);
-}
-
-function cargarTabla(objetos){
+function cargarTabla(){
     main_main_tbody.innerHTML = "";
-    if (objetos.length > 0) {
-        objetos.forEach((obj, index) => {
-            main_main_tbody.appendChild(crearFila(obj, index));
+    if (usuarios.length > 0) {
+        usuarios.forEach((usu, index) => {
+            main_main_tbody.appendChild(crearFila(usu, index));
         });
     }
 
     cargarResumen();
 }
 
-function cargarColumnas(objetos){
+function cargarColumnas(){
     
-    main_main_tr.innerHTML="";
-
-    const principio_columna = document.createElement('th');
-    principio_columna.textContent ="#"
-    main_main_tr.appendChild(principio_columna);
-
-    if (objetos.length > 0){
-        for (const o in objetos[0]) {
+    
+    if (usuarios.length > 0){
+        for (const u in usuarios[0]) {
             const nueva_columna = document.createElement('th');
-            nueva_columna.textContent = o;
+            nueva_columna.textContent = u;
             main_main_tr.appendChild(nueva_columna);
         }
     }
@@ -55,7 +40,7 @@ function cargarColumnas(objetos){
 
 }
 
-function crearFila(obj, index){
+function crearFila(usu, index){
     const fila = document.createElement('tr');
 
     const nroFila = document.createElement('td');
@@ -63,12 +48,12 @@ function crearFila(obj, index){
     nroFila.className = 'text-center bg-secondary text-white'
     fila.appendChild(nroFila);
 
-    for (const o in obj) {
-        if (obj.hasOwnProperty(o)) {
+    for (const u in usu) {
+        if (usu.hasOwnProperty(u)) {
             const celda = document.createElement('td');
             celda.className = 'text-center'
-            if(obj[o]!=null){
-                celda.innerHTML = obj[o].toString();
+            if(usu[u]!=null){
+                celda.innerHTML = usu[u].toString();
             } 
             else{
                 celda.innerHTML = "";
@@ -83,7 +68,7 @@ function crearFila(obj, index){
     
     btnBorrado.className = 'btn btn-danger btnBorrado';
 
-    btnBorrado.addEventListener('click', (e) => {eliminarFila(obj, objetos[obj_util]);});
+    btnBorrado.addEventListener('click', (e) => {eliminarFila(usu);});
 
     imgbtnBorrado.src = './Imagenes/eliminar.png';
     imgbtnBorrado.className = 'imgbtnBorrado';
@@ -95,10 +80,10 @@ function crearFila(obj, index){
 
     return fila;
 }
-function eliminarFila(obj, objetos){
-    const nroObj = objetos.indexOf(obj);
-    objetos.splice(nroObj, 1);
-    cargarTabla(objetos);        
+function eliminarFila(usu){
+    const nroUsu = usuarios.indexOf(usu);
+    usuarios.splice(nroUsu, 1);
+    cargarTabla();        
 }
 
 
@@ -118,7 +103,7 @@ function cargarTotal(){
     const filaCantTotal = document.createElement('tr');
     const celdaCantTotal = document.createElement('td');
     const celdaCantValorTotal= document.createElement('td');
-    celdaCantValorTotal.textContent = objetos[obj_util].length.toString();
+    celdaCantValorTotal.textContent = usuarios.length.toString();
     celdaCantTotal.textContent = 'Total:';
     celdaCantValorTotal.className = 'p-2';
     filaCantTotal.appendChild(celdaCantTotal);
@@ -142,35 +127,4 @@ nav_div_li_cerrar_sesion.addEventListener('click', () =>{
     cerrarSesion();
     window.location.href = './index.html'});
 });
-
-function cargarMenuBotones()
-{
-    
-    objetos.forEach((obj,index) => {
-        if(obj){
-            
-            
-        if(index==0){
-            pillsTab.innerHTML += '<li class="nav-item" role="presentation"> <button class="nav-link w-100 custom-btn-main active" data-bs-toggle="pill" data-bs-target="#pills" type="button" role="tab" aria-controls="pills" id="btn'+obj[0].getObjName()+'" aria-selected="true">'+obj[0].getObjName()+'</button>   </li>';
-        }
-        else{
-            
-            pillsTab.innerHTML += '<li class="nav-item" role="presentation"> <button class="nav-link w-100 custom-btn-main" data-bs-toggle="pill" data-bs-target="#pills" type="button" role="tab" aria-controls="pills" aria-selected="false" id="btn'+obj[0].getObjName()+'">'+ obj[0].getObjName() + '</button>   </li>';
-        }
-        }
-    });
-
-  let pill_botones = pillsTab.querySelectorAll('button');
-   pill_botones.forEach((b,index) => {
-     b.addEventListener('click',(e)=>{
-        e.preventDefault
-       obj_util = index; 
-       cargarTablaCompleta(objetos[obj_util]);
-     })
-  });
-
-}
-
-
-    
 
