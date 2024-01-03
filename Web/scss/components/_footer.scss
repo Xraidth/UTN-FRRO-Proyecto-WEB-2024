@@ -24,7 +24,11 @@ position: relative;
 
 .main_footer{
     background-color:#333333;
-    height: 25%;
+    height: 100vh;;
+    max-height: 118px;
+    padding: 0;
+    margin:0;
+    
  }
 
  .main_footer_tabla{
@@ -37,6 +41,24 @@ position: relative;
   
  }
 
+
+ .main-alerta-sweet-div{
+    width: 100%;
+    height: 50%;
+    border: solid 2px red;
+    position: absolute;
+    top: 0;
+ }
+
+.main-alerta-sweet-span{
+
+border: solid 2px black;
+
+ }
+ .swal2-container{
+    position: absolute ;
+    
+ }
     
 /*--------Ayuda--------*/
 .ayuda_footer{

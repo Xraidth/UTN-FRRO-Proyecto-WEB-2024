@@ -153,7 +153,9 @@ width: 100%;
     flex-wrap: wrap;
 }
 
-
+.swal2-input::placeholder{
+    color: black ;
+}
 
 .reg_f1_h1{
     
@@ -186,7 +188,7 @@ flex-direction: row;
 
 .main_main{
     background-color: #ffffff;
-    height: 75%;
+    height: 554px; //75%
     display:flex;
     }
 
