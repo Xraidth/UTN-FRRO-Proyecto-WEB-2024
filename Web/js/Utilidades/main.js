@@ -7,6 +7,9 @@ const btnConsultar = document.getElementById('btnConsultar');
 const main_main_tr = document.getElementById('main_main_tr');
 const pillsTab = document.getElementById('pills-tab');
 
+
+
+
 let objetos = [usuarios, materias]; 
 let obj_util;
 
@@ -16,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     cargarUsuario();
     cargarMenuBotones();
     cargarTablaCompleta(objetos[obj_util]);
+    
 });
 
 function cargarTablaCompleta(objetos){
@@ -49,8 +53,11 @@ function cargarColumnas(objetos){
             main_main_tr.appendChild(nueva_columna);
         }
     }
-    const final_columna = document.createElement('th');
-    main_main_tr.appendChild(final_columna);
+    for (let index = 0; index < 3; index++) {
+        
+        const final_columna = document.createElement('th');
+        main_main_tr.appendChild(final_columna);
+    }
 
 
 }
@@ -77,20 +84,34 @@ function crearFila(obj, index){
         }
     }
 
-    const btnFila = document.createElement('td');
+    const dirBtnEditCelda = ['./Imagenes/info.png', './Imagenes/edit.png', './Imagenes/eliminar.png'];
+
+    dirBtnEditCelda.forEach((dir_img, index) => {
+        const btnFila = document.createElement('td');
     const btnBorrado = document.createElement('button');
-    const imgbtnBorrado = document.createElement('img');
-    
+    const imgbtn = document.createElement('img');
+    imgbtn.src = dir_img;
+        
+    if(index ==2){
     btnBorrado.className = 'btn btn-danger btnBorrado';
-
     btnBorrado.addEventListener('click', (e) => {eliminarFila(obj, objetos[obj_util]);});
-
-    imgbtnBorrado.src = './Imagenes/eliminar.png';
-    imgbtnBorrado.className = 'imgbtnBorrado';
-    btnBorrado.appendChild(imgbtnBorrado);
-
+    imgbtn.className = 'imgbtn';
+    }
+    if(index ==1){
+        btnBorrado.className = 'btn btn-warning btnBorrado';
+        btnBorrado.addEventListener('click', (e) => {console.log("Usted apreto edit")});
+        imgbtn.className = 'imgbtn';
+        }
+    if(index ==0){
+            btnBorrado.className = 'btn btn-success btnBorrado';
+            btnBorrado.addEventListener('click', (e) => {console.log("Usted apreto info")});
+            imgbtn.className = 'imgbtn';
+            }
+    btnBorrado.appendChild(imgbtn);
     btnFila.appendChild(btnBorrado);
     fila.appendChild(btnFila);
+    });
+   
 
 
     return fila;
@@ -103,9 +124,26 @@ function eliminarFila(obj, objetos){
 
 
 btnAgregar.addEventListener('click', () =>{ window.location.href = './registro.html'});
-btnModificar.addEventListener('click', () =>{console.log('boton mod apretado');});
-btnBorrar.addEventListener('click', () =>{console.log('boton borrar apretado');});
-btnConsultar.addEventListener('click', () =>{console.log('boton consultar apretado');});
+btnBorrar.addEventListener('click', () =>{
+    
+    objetos.splice(obj_util,1);
+    
+});
+btnConsultar.addEventListener('click', () =>{
+    Swal.fire({
+        title: "<strong>Información general</strong>",
+        icon: "info",
+        html: `
+          Para <b>más detalles</b>, ir a
+          <a href="#">ayuda</a>,
+          no dudes en consultar!!
+        `,
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        
+      });
+});
 
 
 function cargarResumen(){

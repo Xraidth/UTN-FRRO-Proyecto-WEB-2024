@@ -393,8 +393,8 @@ body, html {
   transition: 0.1s;
 }
 
-.imgbtnBorrado {
-  width: 13px;
+.imgbtn {
+  width: 16px;
 }
 
 .btnBorrado:hover {
