@@ -10,6 +10,8 @@ const txtCalle= document.getElementById('txtCalle');
 const txtNro= document.getElementById('txtNro');
 const btnRegistro = document.getElementById('btnRegistro');
 const ddTipoUsuario = document.getElementById('ddTipoUsuario');
+
+
 btnRegistro.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -35,6 +37,7 @@ btnRegistro.addEventListener('click', (e) => {
     
     
 });
+
 
 
   function validarRegistro()
