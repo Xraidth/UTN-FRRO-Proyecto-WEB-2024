@@ -138,6 +138,6 @@ const nextButton = document.getElementById('nextButton');
 function clickNextButton() {
         nextButton.click();
 }
-const btn_next_interval = setInterval(clickNextButton, 6000);
+const btn_next_interval = setInterval(clickNextButton, 8000);
     
   

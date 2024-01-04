@@ -119,7 +119,7 @@ function crearFila(obj, index){
         }
     if(index ==0){
             btnBorrado.className = 'btn btn-success btnBorrado';
-            btnBorrado.addEventListener('click', (e) => {console.log("Usted apreto info")});
+            btnBorrado.addEventListener('click', (e) => {consultarFila(obj)});
             imgbtn.className = 'imgbtn';
             }
     btnBorrado.appendChild(imgbtn);
@@ -137,9 +137,44 @@ function eliminarFila(obj, objetos){
     objetos.splice(nroObj, 1);
     cargarTabla(objetos);        
 }
+}
+function consultarFila(obj){
+  if (obj){
+    const obj_div_txt = document.createElement('div');
+    obj_div_txt.classList.add('d-flex','flex-column','align-items-center', 'overflow-y-auto', 'justify-content-between');
+    
+    for (const o in obj) {
+      const obj_div_txt_rw = document.createElement('div');
+      obj_div_txt_rw.classList.add('d-flex','flex-row', 'align-content-start');
+      
+      const obj_lbl_txt_nom = document.createElement('p');
+      obj_lbl_txt_nom.textContent = o+":";
+      obj_lbl_txt_nom.classList.add('text-end', 'text-dark',"m-3");
+
+      const obj_lbl_txt_val = document.createElement('b');
+      obj_lbl_txt_val.classList.add('text-dark','m-3'); 
+      if(obj[o])
+      obj_lbl_txt_val.textContent = obj[o];
+      else {
+        obj_lbl_txt_val.textContent = "No asignado";}
+
+      
+      obj_div_txt_rw.appendChild(obj_lbl_txt_nom);
+      obj_div_txt_rw.appendChild(obj_lbl_txt_val);  
+      obj_div_txt.appendChild(obj_div_txt_rw);
+      }
+
+    Swal.fire({
+      title: 'Informacion',
+      html: obj_div_txt,
+      confirmButtonText: 'Agregar',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      allowOutsideClick: true,
+    });
 
 }
-
+}
 
 btnAgregar.addEventListener('click', () =>{  
    
