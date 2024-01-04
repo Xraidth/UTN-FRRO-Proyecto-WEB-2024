@@ -176,7 +176,7 @@ body, html {
 }
 
 .div_s2 {
-  width: 65%;
+  width: 75%;
   height: 100%;
 }
 
@@ -195,12 +195,29 @@ body, html {
   width: 100%;
 }
 
+.image-transition {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+#nextButton,
+#prevButton,
+.indicadores_carousel {
+  display: none;
+}
+
+.div_s1:hover #nextButton,
+.div_s1:hover #prevButton,
+.div_s1:hover .indicadores_carousel {
+  display: block;
+}
+
 .carousel__h1 {
   color: #ffffff;
   font-size: 40px;
   font-weight: bold;
   font-family: "Arial";
-  margin: 10px 10px 10px 20px;
+  margin: 50px 10px 10px 30px;
 }
 
 .carousel__h2 {
@@ -208,18 +225,19 @@ body, html {
   font-size: 30px;
   font-weight: bold;
   font-family: "Arial";
-  margin: 20px;
+  margin: 20px 20px 20px 30px;
 }
 
 .linea-blanca {
-  margin: 20px;
+  margin: 20px 20px 20px 30px;
   border-bottom: 3px solid #ffffff;
   width: 200px;
 }
 
 .carousel__p {
   color: #ffffff;
-  margin: 10px 20px 400px 20px;
+  margin: 60px 50px 400px 30px;
+  font-size: 20px;
 }
 
 .carousel {
