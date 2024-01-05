@@ -114,7 +114,7 @@ function crearFila(obj, index){
     }
     if(index ==1){
         btnBorrado.className = 'btn btn-warning btnBorrado';
-        btnBorrado.addEventListener('click', (e) => {console.log("Usted apreto edit")});
+        btnBorrado.addEventListener('click', (e) => {editarFila(obj,objetos[obj_util])});
         imgbtn.className = 'imgbtn';
         }
     if(index ==0){
@@ -131,6 +131,125 @@ function crearFila(obj, index){
 
     return fila;
 }
+
+
+
+function editarFila(obj, objetos) {
+  const mainTxtHtmlAdd = [
+    '<input type="txt" class="swal2-input" placeholder="Usuario" id="txtUsuario">' +
+    '<input type="password" class="swal2-input" placeholder="Contraseña" id="txtClave">' +
+    '<input type="email" class="swal2-input" placeholder="Email" id="txtEmail">' +
+    '<input type="txt" class="swal2-input" placeholder="Nombre" id="txtNombre">' +
+    '<input type="txt" class="swal2-input" placeholder="Apellido" id="txtApellido">' +
+    '<div class="d-flex flex-column align-items-center mt-4">' +
+    '<label class="font-weight-bold text-dark">Fecha de Nacimiento:</label>' +
+    '<input type="date" class="swal2-input" id="dtpFechaNac"></div>' +
+    '<input type="txt" class="swal2-input" placeholder="Teléfono" id="txtTel">' +
+    '<input type="txt" class="swal2-input" placeholder="DNI" id="txtDni">' +
+    '<input type="txt" class="swal2-input" placeholder="Calle" id="txtCalle">' +
+    '<input type="txt" class="swal2-input" placeholder="Nro" id="txtNro">' +
+    '<div class="d-flex flex-column align-items-center mt-4">' +
+    '<label for="ddTipoUsuario" class="font-weight-bold text-dark">Seleccione un Tipo de usuario:</label>' +
+    '<select class="form-control w-50 mt-4" id="ddTipoUsuario">' +
+    '<option>Administrador</option>' +
+    '<option>Profesor</option>' +
+    '<option>Alumno</option>' +
+    '</select></div>',
+    '<input type="txt" class="swal2-input" placeholder="Nombre" id="txtNomMat">' +
+    '<input type="txt" class="swal2-input" placeholder="Descripción" id="txtDescMat">'
+  ];
+
+  Swal.fire({
+    title: 'Formulario',
+    html: mainTxtHtmlAdd[obj_util],
+    confirmButtonText: 'Agregar',
+    showCancelButton: true,
+    cancelButtonText: 'Cancelar',
+    allowOutsideClick: true,
+    didOpen: () => {
+      if (obj_util == 0) {
+        const txtUsuario = document.getElementById('txtUsuario');
+        const txtClave= document.getElementById('txtClave');
+        const txtEmail= document.getElementById('txtEmail');
+        const txtNombre= document.getElementById('txtNombre');
+        const txtApellido= document.getElementById('txtApellido');
+        const dtpFechaNac= document.getElementById('dtpFechaNac');
+        const txtTel= document.getElementById('txtTel');
+        const txtDni= document.getElementById('txtDni');
+        const txtCalle= document.getElementById('txtCalle');
+        const txtNro= document.getElementById('txtNro');
+        const ddTipoUsuario = document.getElementById('ddTipoUsuario');
+        
+        txtUsuario.value = obj['Usuario'];
+        txtClave.value = obj['Clave'];
+        txtEmail.value = obj['Email'];
+        txtNombre.value = obj['Nombre'];
+        txtApellido.value = obj['Apellido'];
+        
+        txtTel.value = obj['Telefono'];
+        txtDni.value = obj['Dni'];
+        if(obj['Direccion']){
+        partes= obj['Direccion'].split(" ");	
+        
+        txtCalle.value = partes[0];
+        txtNro.value = partes[1];
+      }
+    }
+      if(obj_util==1){
+        
+        const txtNomMat = document.getElementById('txtNomMat');
+        const txtDescMat= document.getElementById('txtDescMat');
+        
+        
+        txtNomMat.value = obj['nombre'];
+        txtDescMat.value = obj['descripcion'];
+       
+      }
+       
+
+      
+    },
+    preConfirm: () => {
+
+      switch (obj_util) {
+        case 0:
+          return validar_el_Usuario(1, obj, objetos);
+        case 1:
+          return validar_la_materia(1, obj, objetos);
+        default:
+          notificar("Error, póngase en contacto con un administrador");
+          
+      }
+      
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "Modificado!",
+        text: "Todo listo",
+        icon: "success"
+      });
+
+      
+        
+    }
+
+  
+  });
+}
+
+function modificarFila(obj, obj_mod, objetos){
+ 
+  const index = objetos.findIndex(item => item === obj);
+  if(index!=null || index!=undefined){
+  objetos[index] = obj_mod;
+  
+  }
+  cargarTabla(objetos);     
+}
+
+
+
 function eliminarFila(obj, objetos){
     if(obj!=null && objetos.length!=0){
     const nroObj = objetos.indexOf(obj);
@@ -147,7 +266,7 @@ function consultarFila(obj){
       const obj_div_txt_rw = document.createElement('div');
       obj_div_txt_rw.classList.add('d-flex','flex-row', 'align-content-start');
       
-      const obj_lbl_txt_nom = document.createElement('p');
+      const obj_lbl_txt_nom = document.createElement('div');
       obj_lbl_txt_nom.textContent = o+":";
       obj_lbl_txt_nom.classList.add('text-end', 'text-dark',"m-3");
 
@@ -167,18 +286,28 @@ function consultarFila(obj){
     Swal.fire({
       title: 'Informacion',
       html: obj_div_txt,
-      confirmButtonText: 'Agregar',
-      showCancelButton: true,
-      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Ok',
       allowOutsideClick: true,
     });
 
 }
 }
 
+
 btnAgregar.addEventListener('click', () =>{  
    
-    let main_txt_html_add = 
+    const main_select_html_add = 
+    '<div class="d-flex flex-column align-items-center">'+
+    '<label class="text-dark" for="mainAddSelect">Agregar:</label>'+
+    '<select class="form-control w-50 mt-4" id="mainAddSelect" name="mainAddSelect">'+
+    '<option value="0">Usuario</option>'+
+    '<option value="1">Materia</option>'+
+    '</select>'+
+    '</div>';
+    
+
+
+    const main_txt_html_add = 
         [(' <input type="txt" class="swal2-input" placeholder="Usuario" id="txtUsuario">' +
           '<input  type="password" class="swal2-input" placeholder="Constraseña" id="txtClave">'+
           ' <input type="email" class="swal2-input" placeholder="Email" id="txtEmail">' +
@@ -206,19 +335,37 @@ btnAgregar.addEventListener('click', () =>{
 
     Swal.fire({
         title: 'Formulario',
-        html: main_txt_html_add[obj_util],
+        html: main_select_html_add + main_txt_html_add[obj_util],
         confirmButtonText: 'Agregar',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
         allowOutsideClick: true,
+        didOpen: () => {
+          const mainAddSelect = document.getElementById('mainAddSelect');
+          mainAddSelect.value = obj_util;
+          
+          mainAddSelect.addEventListener("change", (event) => {
+            obj_util = mainAddSelect.value;
+            console.log(obj_util + "   "+ mainAddSelect.value)
+            cargarMenuBotones();
+            cargarTablaCompleta(objetos[obj_util]);
+            Swal.close();
+            btnAgregar.click();
+          });
+          
+            
+        },
         preConfirm: () => {
+
+          
+
             switch(obj_util) {
               case 0:
-                return validar_el_Usuario();
+                return validar_el_Usuario(0, null, objetos[obj_util]);
               case 1:
-                return validar_la_materia();
+                return validar_la_materia(0, null, objetos[obj_util]);
               default:
-                // Puedes agregar lógica adicional para otros casos si es necesario
+                
                 notificar("Error pongase en contacto con un administrador");
             }
           }
@@ -239,15 +386,21 @@ btnAgregar.addEventListener('click', () =>{
         
         });
  
-function validar_la_materia(){
+function validar_la_materia(i,obj, objetos){
     const txtNomMat = document.getElementById('txtNomMat');
    const txtDescMat = document.getElementById('txtDescMat');
+   if(i==0){
    materias.push(new Materia(txtNomMat.value, txtDescMat.value));
-   cargarTablaCompleta(objetos[obj_util]);
+    }
+    if(i==1){
+      
+    modificarFila(obj, new Materia(txtNomMat.value, txtDescMat.value), objetos);
+    }
+   cargarTablaCompleta(objetos);
    return true;
 }
 
-function validar_el_Usuario()
+function validar_el_Usuario(i,obj, objetos)
 {
     const txtUsuario = document.getElementById('txtUsuario');
     const txtClave= document.getElementById('txtClave');
@@ -262,6 +415,7 @@ function validar_el_Usuario()
     const ddTipoUsuario = document.getElementById('ddTipoUsuario');
 
     if(validarRegistro()){
+      if(i==0){
     usuarios.push(new Usuario(
         txtUsuario.value, 
         txtClave.value, 
@@ -273,7 +427,11 @@ function validar_el_Usuario()
         txtDni.value,
         txtCalle.value+" "+txtNro.value,
         ddTipoUsuario.value.toString()
-        ));
+        ));}
+      if(i==1){
+      modificarFila(obj, new Usuario(txtUsuario.value, txtClave.value, txtEmail.value, txtNombre.value, txtApellido.value, dtpFechaNac.value.toString(),txtTel.value, txtDni.value, txtCalle.value+" "+txtNro.value, ddTipoUsuario.value.toString()), objetos);
+      }
+      cargarTablaCompleta(objetos);
         return true;
 }
 else{return false;}
