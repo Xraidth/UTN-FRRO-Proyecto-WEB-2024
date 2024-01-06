@@ -16,6 +16,9 @@ class Usuario {
     getObjName(){
         return "Usuarios";
     }
+    static getName(){
+        return "Usuarios";
+    }
 }
 
 
