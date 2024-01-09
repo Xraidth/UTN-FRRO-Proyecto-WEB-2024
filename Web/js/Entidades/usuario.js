@@ -22,17 +22,7 @@ class Usuario {
 }
 
 
-  
 
-const usuarios = [];
-usuarios.push(
-new Usuario('1', '1', null, null, null, null, null, null, null, null), 
-new Usuario('2', '2', null, null, null, null, null, null, null, null), 
-new Usuario('3', '3', null, null, null, null, null, null, null, null),  
-new Usuario('admin', 'admin', null, null, null, null, null, null, null, null), 
-new Usuario('alumno', 'alumno', null, null, null, null, null, null, null, null), 
-new Usuario('profesor', 'profesor', null, null, null, null, null, null, null, null)
-);
 
 function usuarioActual(){
     return JSON.parse(sessionStorage.getItem('usuario'));
@@ -86,3 +76,78 @@ function checkSesion(){
     
 }
 
+const apiUrlUsuario = '/Usuarios.json';
+
+function altaUsuario(usu){
+    fetch(apiUrlUsuario,{
+    method:'POST',
+    headers:{
+        'Content-Type':'application/json',
+    },
+    body:JSON.stringify(usu)
+    })
+    .then(response => {response.json();})
+    .then(data => {console.log('Respuesta POST:', data);})
+    .catch(error => console.error('Error en POST:', error));
+    
+}
+
+
+
+async function getAllUsuarios(){
+    
+    const json = await fetch(apiUrlUsuario).then(response => response.json())
+     
+     
+     let aux = json.map(
+                 x => new Usuario(
+                 x.Usuario, 
+                 x.Clave,
+                 x.Email,
+                 x.Nombre,
+                 x.Apellido,
+                 x.FechaNac,
+                 x.Telefono,
+                 x.Dni,
+                 x.TipoUsuario));
+    return aux;
+      
+    
+     
+     
+ }
+
+
+function getOneUsuario (nom_usu){
+    const dir = apiUrlUsuario + new URLSearchParams({Usuario:nom_usu})
+    fetch(dir)
+    .then(response => response.json())
+    .then(data => console.log('Respuesta GET (one):', data))
+    .catch(error => console.error('Error en GET(one):', error));
+}
+
+function updateUsuario(usu, id){
+fetch(apiUrlUsuario+'?Usuario='+ id, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(usu),
+  })
+    .then(response => response.json())
+    .then(data => console.log('Respuesta PUT:', data))
+    .catch(error => console.error('Error en PUT:', error));
+}
+function deleteUsuario(id){
+    
+    fetch(apiUrlUsuario +'?Usuario='+ id,{
+        method:'DELETE',
+        headers:{
+            'Content-Type':'application/json'
+        },
+    })
+    .then(response => response.json())
+    .then(data => console.log('Respuesta DELETE:', data))
+    .catch(error => console.error('Error en DELETE:', error));
+    
+}

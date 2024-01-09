@@ -1,4 +1,4 @@
-    
+
 
     const btnIngreso = document.getElementById('btnIngreso');
     const txtUsuario = document.getElementById('txtUsuario');
@@ -15,11 +15,16 @@
     
     
     document.addEventListener('DOMContentLoaded', function() {
-        cargarImagenes();
-        checkLocal()||checkSesion() ? window.location.href = './main.html': txtUsuario.focus();
         
+        cargarImagenes();
+        checkLocal()||checkSesion() ? window.location.href = './main.html': txtUsuario.focus(); 
         
     });
+
+   
+
+  
+    
     
     function cargarImagenes(){
         
@@ -60,22 +65,6 @@
             }
         }, 1900);
 
-
-        
-
-        
-
-
-        
-
-        
-        
-
-
-        
-
-        
-
         i_mov = (i_mov + 1) % totalImages;
     }
     
@@ -98,9 +87,9 @@
         }
     });
 
-    btnIngreso.addEventListener('click', (e) => {
+    btnIngreso.addEventListener('click', async (e) => {
         e.preventDefault();
-        const usu = buscaUsuario(txtUsuario.value, txtClave.value);
+        const usu = await buscaUsuario(txtUsuario.value, txtClave.value);
         
         if (usu != undefined && usu!=null) {
             guardarSesion(usu);
@@ -121,16 +110,18 @@
             notificar(txtNotif);
                 
         }
-    });
-
-    function buscaUsuario(usu, clave)
-    {
         
-        return usuarios.find(x=>x.Usuario === usu && x.Clave === clave);
-
     }
+    );
 
-   
+   async function buscaUsuario(usu, clave)
+    {
+        const usuarios = await getAllUsuarios();
+        return usuarios.find(x=>x.Usuario === usu && x.Clave === clave);
+        
+   }
+
+  
 
     
 const nextButton = document.getElementById('nextButton');

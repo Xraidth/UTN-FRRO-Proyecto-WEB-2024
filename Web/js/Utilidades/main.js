@@ -21,17 +21,28 @@ const ddTipoUsuario = document.getElementById('ddTipoUsuario');
 
 
 
-let objetos = [usuarios,materias]; 
+let objetos = []; 
 let obj_util;
 
-document.addEventListener('DOMContentLoaded', function() { 
+document.addEventListener('DOMContentLoaded', async function() { 
+  
     
+    objetos = await cargarDatos();
     obj_util = 0;
     cargarUsuario();
     cargarMenuBotones();
     cargarTablaCompleta(objetos[obj_util]);
     
 });
+
+async function cargarDatos()
+{
+const usuarios = await getAllUsuarios();
+const materias = await getAllMaterias();
+objetos.push(usuarios, materias);
+return objetos;
+}
+
 
 function cargarTablaCompleta(objetos){
     VaciarTabla();
@@ -243,17 +254,39 @@ function modificarFila(obj, obj_mod, objetos){
   const index = objetos.findIndex(item => item === obj);
   if(index!=null || index!=undefined){
   objetos[index] = obj_mod;
+
+  switch (obj_util) {
+    case 0: updateUsuario(obj,obj['Usuario']);
+        
+        break;
+    case 1: updateUsuario(obj, obj['nombre']);
+        
+        break;
+    
+    default: notificar("Error al Updatear");
+        
+}
   
   }
   cargarTabla(objetos);     
 }
 
-
-
 function eliminarFila(obj, objetos){
     if(obj!=null && objetos.length!=0){
     const nroObj = objetos.indexOf(obj);
-    objetos.splice(nroObj, 1);
+    switch (obj_util) {
+      case 0: deleteUsuario(obj['Usuario']);
+          
+          break;
+      case 1: deleteMateria(obj['nombre']);
+          
+          break;
+      
+      default: notificar("Error al borrar");
+          
+  }
+  
+    objetos.splice(nroObj, 1);    
     cargarTabla(objetos);        
 }
 }
@@ -390,7 +423,8 @@ function validar_la_materia(i,obj, objetos){
     const txtNomMat = document.getElementById('txtNomMat');
    const txtDescMat = document.getElementById('txtDescMat');
    if(i==0){
-   materias.push(new Materia(txtNomMat.value, txtDescMat.value));
+    const mat = new Materia(txtNomMat.value, txtDescMat.value);
+    altaMateria(mat);
     }
     if(i==1){
       
@@ -416,7 +450,7 @@ function validar_el_Usuario(i,obj, objetos)
 
     if(validarRegistro()){
       if(i==0){
-    usuarios.push(new Usuario(
+     const usu = new Usuario(
         txtUsuario.value, 
         txtClave.value, 
         txtEmail.value, 
@@ -427,7 +461,9 @@ function validar_el_Usuario(i,obj, objetos)
         txtDni.value,
         txtCalle.value+" "+txtNro.value,
         ddTipoUsuario.value.toString()
-        ));}
+        );
+        altaUsuario(usu);
+      }
       if(i==1){
       modificarFila(obj, new Usuario(txtUsuario.value, txtClave.value, txtEmail.value, txtNombre.value, txtApellido.value, dtpFechaNac.value.toString(),txtTel.value, txtDni.value, txtCalle.value+" "+txtNro.value, ddTipoUsuario.value.toString()), objetos);
       }
@@ -440,7 +476,6 @@ else{return false;}
 btnBorrar.addEventListener('click', () =>{
     
     if(objetos.length !=0){
-    console.log(objetos);
     if(objetos[obj_util][0]!=undefined){
     let nom_A_eliminar =objetos[obj_util][0].getObjName();
     Swal.fire({
@@ -531,8 +566,9 @@ nav_div_li_cerrar_sesion.addEventListener('click', () =>{
 function cargarMenuBotones()
 {
     pillsTab.innerHTML = "";
+    if(objetos){
     objetos.forEach((obj,index) => {
-        if(obj){
+        if(obj && obj[0]){
             
             
         if(index==0){
@@ -554,7 +590,7 @@ function cargarMenuBotones()
      })
   });
 
-}
+}}
 
 
 function VaciarTabla(){
