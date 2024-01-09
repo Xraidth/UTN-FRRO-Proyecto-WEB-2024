@@ -17,7 +17,7 @@ function altaMateria(mat){
         headers:{
         'Content-Type':'application/json'
         },
-        body:JSON.stringify(usu)
+        body:JSON.stringify(mat)
     }).then(response => response.json())
     .then(data => {console.log('Respuesta POST:', data);})
     .catch(error => console.error('Error en POST:', error))
@@ -35,9 +35,8 @@ async function getAllMaterias(){
     
 }
 
-function getOneMateria (nom_mat){
-    const dir = apiUrlMateria+ new URLSearchParams({nombre:nom_mat})
-    fetch(dir)
+function getOneMateria (id){
+    fetch(apiUrlMateria+ "?nombre=" + id)
     .then(response => response.json())
     .then(data => console.log('Respuesta GET (one):', data))
     .catch(error => console.error('Error en GET(one):', error));
@@ -45,7 +44,7 @@ function getOneMateria (nom_mat){
 
 
 function updateMateria(mat, id){
-    fetch(apiUrlMateria, {
+    fetch(apiUrlMateria+ "?nombre=" + id,{
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -59,7 +58,7 @@ function updateMateria(mat, id){
 
     function deleteMateria(id){
         
-        fetch(apiUrlMateria + id,{
+        fetch(apiUrlMateria+ "?nombre=" + id,{
             method:'DELETE',
             headers:{
                 'Content-Type':'application/json'
