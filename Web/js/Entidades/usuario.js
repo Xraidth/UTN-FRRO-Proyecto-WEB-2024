@@ -118,9 +118,8 @@ async function getAllUsuarios(){
  }
 
 
-function getOneUsuario (nom_usu){
-    const dir = apiUrlUsuario + new URLSearchParams({Usuario:nom_usu})
-    fetch(dir)
+function getOneUsuario (id){
+    fetch(apiUrlUsuario+'?Usuario='+ id)
     .then(response => response.json())
     .then(data => console.log('Respuesta GET (one):', data))
     .catch(error => console.error('Error en GET(one):', error));
